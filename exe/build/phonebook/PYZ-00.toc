@@ -1,5 +1,5 @@
 ('C:\\Users\\W1LLoW\\Desktop\\Study\\GB\\Разработчик\\Основы '
- 'Python\\ТелефоннаяКнига\\build\\phonebook\\PYZ-00.pyz',
+ 'Python\\PhoneBook\\build\\phonebook\\PYZ-00.pyz',
  [('_compat_pickle',
    'C:\\Users\\W1LLoW\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\_compat_pickle.py',
    'PYMODULE'),
