@@ -57,6 +57,14 @@ def write_txt(filename , phone_book):
         for contact in phone_book:
             phout.write(','.join(contact.values()) + '\n')
 
+def copy_line(src_file, dst_file, line_number):
+    with open(src_file, 'r', encoding='utf-8') as src:
+        lines = src.readlines()
+        if 0 < line_number <= len(lines):
+            line_to_copy = lines[line_number - 1]
+            with open(dst_file, 'a', encoding='utf-8') as dst:
+                dst.write(line_to_copy)
+
 def work_with_phonebook():
     phone_book=read_txt('phon.txt')
     
@@ -103,11 +111,18 @@ def work_with_phonebook():
         else:
             messagebox.showinfo('Результат', "Контакт не найден")
 
-    def add_user_acition():
+    def add_user_action():
         user_data = entry_user_data.get()
         result = add_user(phone_book, user_data)
         messagebox.showinfo('Результат', result)
         write_txt('phonebook.txt', phone_book)
+
+    def copy_line_action():
+        src_file = 'phonebook.txt'
+        dst_file = 'phonebook_copy.txt'
+        line_number = int(entry_line_number.get())
+        result = copy_line(src_file, dst_file, line_number)
+        messagebox.showinfo("Результат", 'Строка скопирована')
 
     root = tk.Tk()
     root.title("Телефонная книга")
@@ -150,11 +165,14 @@ def work_with_phonebook():
     entry_line_number = tk.Entry(frame)
     entry_line_number.grid(row=9,column=1,padx=10,pady=5)
 
-    button_add_user = tk.Button(frame, text='Добавить новый контакт', command=add_user_acition)
+    button_copy_line = tk.Button(frame, text= "Копировать строку", command=copy_line_action)
+    button_copy_line.grid(row=10,column=0,columnspan=2,padx=10,pady=5)
+
+    button_add_user = tk.Button(frame, text='Добавить новый контакт', command=add_user_action)
     button_add_user.grid(row=8,column=0,columnspan=2,padx=10,pady=5)
 
     button_exit = tk.Button(frame, text='Выход', command=root.quit)
-    button_exit.grid(row=9, column=0, columnspan=2, padx=10, pady=5)
+    button_exit.grid(row=11, column=0, columnspan=2, padx=10, pady=5)
 
     root.mainloop()
 
