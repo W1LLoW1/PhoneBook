@@ -145,6 +145,11 @@ def work_with_phonebook():
     entry_user_data = tk.Entry(frame)
     entry_user_data.grid(row=7,column=1,padx=10,pady=5)
 
+    label_line_number = tk.Label(frame, text= 'Номер строки для копирования')
+    label_line_number.grid(row=9, column=0, padx=10, pady=5)
+    entry_line_number = tk.Entry(frame)
+    entry_line_number.grid(row=9,column=1,padx=10,pady=5)
+
     button_add_user = tk.Button(frame, text='Добавить новый контакт', command=add_user_acition)
     button_add_user.grid(row=8,column=0,columnspan=2,padx=10,pady=5)
 
